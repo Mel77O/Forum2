@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Add Category</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+	<body class="bg-[#202433] flex flex-col min-h-screen">
+		<nav class="bg-[#272d43] w-full h-24 flex justify-center items-center gap-10">
+      <a
+				href="{{ url_for('post') }}"
+				class="text-white font-semibold">Home</a>
+        <a
+				href="{{ url_for('logout') }}"
+				class="text-white font-semibold">Logout</a>
+    </nav>
+		<div
+			class="container gap-5 flex-1 p-4 mx-auto text-white flex flex-col justify-center items-center border-l-2  border-r-2 border-[#272d43]">
+			<h1 class="text-center text-3xl font-medium">Add Category</h1>
+			<p class="text-center">You can say anything <br>#FreeSpeech</p>
+			{% if error %}
+			<p>{{error}}</p>
+			{% endif %}
+			<form
+				method="POST"
+				class="grid gap-5 my-12">
+				<input
+					type="text"
+					id="name"
+					name="name"
+					required
+					placeholder="Category Name"
+					class="w-[350px] bg-transparent border border-[#FFCACA] h-12 px-4 rounded-md" />
+				<textarea
+					type="text"
+					id="tags"
+					name="tags"
+					required
+          placeholder="Tags"
+					class="w-[350px] bg-transparent border border-[#FFCACA] p-4 rounded-md"></textarea>
+          <input
+          type="submit"
+          value="Add Category"
+          class="bg-[#a296bd] text-[#202433] h-12 rounded-md font-semibold cursor-pointer my-12" />
+			</form>
+		</div>
+	</body>
+</html>

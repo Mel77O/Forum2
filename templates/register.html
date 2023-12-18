@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Register</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						backgroundImage: {
+							"custom-gradient":
+								"linear-gradient(157deg, #F2B4B4 23.11%, rgba(225, 202, 255, 0.69) 55.55%, rgba(202, 239, 255, 0.47) 79.51%, rgba(251, 202, 255, 0.32) 100.93%)",
+						},
+					},
+				},
+			};
+		</script>
+	</head>
+	<body>
+		<div class="min-h-screen bg-[#202433]">
+			<div class="container grid grid-cols-2 h-screen p-4 mx-auto">
+				<div class="bg-custom-gradient flex flex-col rounded-3xl py-24 px-16 flex flex-col justify-between">
+          <h1 class="text-[#202433] font-semibold text-4xl">INFORMATION <br> MANAGEMENT 2</h1>
+          <p class="text-sm font-medium">PRIVACY POLICY &#x2022; TERMS OF SERVICE</p>
+        </div>
+				<div class="flex justify-center items-center">
+					<div class="flex flex-col text-white gap-24 w-[400px]">
+						<h1 class="text-4xl">Register</h1>
+						{% if error %}
+						<p>{{error}}</p>
+						{% endif %}
+						<form method="POST" class="grid gap-6 w-full">
+
+							<div class="flex flex-col gap-2">
+								<label for="username" class="font-semibold">Username</label>
+								<input
+									type="text"
+									id="username"
+									name="username"
+                  placeholder="Username"
+                  class="bg-[#33394f] h-12 px-4 rounded-md font-semibold"
+									required />
+							</div>
+
+							<div class="flex flex-col gap-2">
+								<label for="email" class="font-semibold">Email</label>
+								<input
+									type="email"
+									id="email"
+									name="email"
+                  placeholder="Email"
+                  class="bg-[#33394f] h-12 px-4 rounded-md font-semibold"
+									required />
+							</div>
+
+							<div class="flex flex-col gap-2 mb-3">
+								<label for="password" class="font-semibold">Password</label>
+								<input
+									type="password"
+									id="password"
+									name="password"
+                  placeholder="Password"
+                  class="bg-[#33394f] h-12 px-4 rounded-md font-semibold"
+									required />
+							</div>
+
+							<input
+								type="submit"
+								value="Register"
+                class="bg-[#a296bd] text-[#202433] h-12 rounded-md font-semibold cursor-pointer" />
+						</form>
+            <p class="text-center">Have an account? <span><a href="{{ url_for('login') }}" class="text-[#a296bd]">Login!</a></span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Post Details</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+	<body class="bg-[#202433] flex flex-col min-h-screen">
+		<nav class="bg-[#272d43] w-full h-24 flex justify-center items-center gap-10">
+      <a
+				href="{{ url_for('post') }}"
+				class="text-white font-semibold">Home</a>
+        <a
+				href="{{ url_for('logout') }}"
+				class="text-white font-semibold">Logout</a>
+    </nav>
+		<div
+			class="container gap-5 flex-1 p-4 mx-auto text-white flex flex-col justify-center items-center border-l-2 border-r-2 border-[#272d43]">
+			<div
+				class="shadow-sm bg-gray-800 flex w-[550px] flex-col items-stretch pt-7 pb-12 px-8 rounded-2xl max-md:px-5">
+				<div class="flex justify-between">
+					<div
+						class="text-white text-2xl font-semibold whitespace-nowrap max-md:max-w-full">
+						{{ post["title"]}}
+					</div>
+          <div class="text-neutral-400 text-sm font-medium whitespace-nowrap">
+            {{ post["category_name"]}}
+          </div>
+				</div>
+
+				<div
+					class="items-stretch flex justify-between gap-2 mt-5 pr-20 max-md:max-w-full max-md:flex-wrap max-md:pr-5">
+					<img
+						loading="lazy"
+						src="{{ url_for('static', filename='images/avatar.png') }}"
+						class="aspect-square object-contain object-center w-[55px] justify-center items-center overflow-hidden shrink-0 max-w-full" />
+					<div
+						class="items-stretch self-center flex grow basis-[0%] flex-col my-auto">
+						<div class="text-white text-sm font-medium whitespace-nowrap">
+							{{ post["author_username"]}}
+						</div>
+						<div class="text-neutral-500 text-xs">{{ post["created_at"] }}</div>
+					</div>
+				</div>
+				<div class="text-white text-lg font-medium mt-8 mb-4 max-md:max-w-full">
+					{{ post["content"]}}
+				</div>
+			</div>
+
+			<form
+				method="POST"
+				class="w-[550px] bg-gray-800 px-3 py-3.5 rounded-md flex flex-col gap-4">
+				<div class="flex gap-5">
+					<img
+						loading="lazy"
+						src="{{ url_for('static', filename='images/avatar.png') }}"
+						class="aspect-square object-contain object-center w-[50px] justify-center items-center overflow-hidden shrink-0 max-w-full" />
+
+					<input
+						type="text"
+						id="content"
+						name="content"
+						placeholder="Write a reply"
+						class="placeholder-neutral-400 text-base whitespace-nowrap border border-[color:var(--Light-100,#D1CAFF)] bg-gray-700 grow justify-center pl-3 pr-16 py-5 rounded-md border-solid items-start max-md:max-w-full max-md:pr-5"
+						required />
+				</div>
+
+				<div class="flex justify-end">
+					<input
+						type="submit"
+						value="Send"
+						class="bg-[#a296bd] text-sm text-[#202433] h-12 rounded-md font-semibold cursor-pointer w-24 self-end" />
+				</div>
+			</form>
+
+			{% for reply in replies %}
+			<div
+				class="w-[550px] bg-gray-800 px-3 py-3.5 rounded-md flex flex-col gap-4">
+				<div
+					class="items-stretch flex justify-between gap-2 mt-5 pr-20 max-md:max-w-full max-md:flex-wrap max-md:pr-5">
+					<img
+						loading="lazy"
+						src="{{ url_for('static', filename='images/avatar.png') }}"
+						class="aspect-square object-contain object-center w-[55px] justify-center items-center overflow-hidden shrink-0 max-w-full" />
+					<div
+						class="items-stretch self-center flex grow basis-[0%] flex-col my-auto">
+						<div class="text-white text-sm font-medium whitespace-nowrap">
+							{{ reply["author_username"]}}
+						</div>
+						<div class="text-neutral-500 text-xs">
+							{{ reply["created_at"] }}
+						</div>
+					</div>
+				</div>
+
+				<div
+					class="text-white text-2xl font-semibold whitespace-nowrap max-md:max-w-full">
+					{{ reply["content"]}}
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</body>
+</html>
