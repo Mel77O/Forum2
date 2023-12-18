@@ -1,3 +1,5 @@
+
+--Dabatos
 CREATE TABLE users (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     username VARCHAR(100) NOT NULL,
@@ -38,6 +40,7 @@ CREATE TABLE replies (
     FOREIGN KEY (author_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
+--Dabatos
 CREATE VIEW user_view AS
 SELECT id, username, email
 FROM users;
@@ -58,6 +61,7 @@ ORDER BY p.created_at DESC;
 
 DELIMITER //
 
+--Dabatos
 CREATE PROCEDURE create_user(
     IN p_username VARCHAR(100),
     IN p_email VARCHAR(100),
@@ -123,6 +127,7 @@ BEGIN
     WHERE post_id = post_id_val;
 END //
 
+--Dabatos
 CREATE PROCEDURE user_login(
     IN p_username VARCHAR(100),
     IN p_password VARCHAR(200)

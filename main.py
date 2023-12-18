@@ -10,12 +10,13 @@ app = Flask(__name__, static_url_path='/static')
 app.secret_key = "Forum-Secret-Key"
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'mimi' 
+app.config['MYSQL_PASSWORD'] = '123456' 
 app.config['MYSQL_DB'] = 'forum'
 
 
 mysql = MySQL(app)
 
+#Dabatos Login
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == 'POST':
@@ -32,7 +33,7 @@ def login():
             return render_template('login.html', error='Invalid username or password')
     return render_template('login.html')
 
-
+#Dabatos Register
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == 'POST':
