@@ -65,7 +65,7 @@ def category():
         return redirect(url_for("add_post", id=result))
     return render_template('category.html')
 
-
+##nabua post
 @app.route("/post/<int:id>", methods=["GET", "POST"])
 def post_details(id):
     if not session.get("id", 0):

@@ -14,6 +14,7 @@ CREATE TABLE categories (
     PRIMARY KEY (id)
 );
 
+--nabua post
 CREATE TABLE posts (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     author_id INT UNSIGNED NOT NULL,
@@ -47,6 +48,7 @@ FROM replies r
 JOIN users u ON r.author_id = u.id
 ORDER BY r.created_at DESC;
 
+--nabua
 CREATE VIEW post_view AS
 SELECT p.id AS id, u.username AS author_username, p.title, p.content, p.created_at, c.`name` AS category_name
 FROM posts p
@@ -77,6 +79,7 @@ BEGIN
     SELECT LAST_INSERT_ID() as new_category_id;
 END //
 
+--nabua
 CREATE PROCEDURE add_post(
     IN author_id INT,
     IN title VARCHAR(255),
@@ -100,6 +103,7 @@ BEGIN
     VALUES (post_id, author_id, content);
 END //
 
+--nabua
 CREATE PROCEDURE get_post(
     IN post_id INT
 )
@@ -130,6 +134,7 @@ BEGIN
     LIMIT 1;
 END //
 
+--nabua
 CREATE TRIGGER post_title BEFORE INSERT
 ON posts
 FOR EACH ROW
