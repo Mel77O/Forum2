@@ -8,6 +8,7 @@ CREATE TABLE users (
     PRIMARY KEY (id)
 );
 
+--Opleda
 CREATE TABLE categories (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(100) NOT NULL,
@@ -72,6 +73,7 @@ BEGIN
     VALUES (p_username, p_email, p_password);
 END //
 
+--Opleda
 CREATE PROCEDURE add_category(
     IN name_val VARCHAR(100),
     IN tags_val TEXT

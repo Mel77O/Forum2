@@ -48,7 +48,7 @@ def register():
         
     return render_template('register.html')
 
-
+#Opleda Category
 @app.route("/category", methods=["GET", "POST"])
 def category():
     if not session.get("id", 0):
